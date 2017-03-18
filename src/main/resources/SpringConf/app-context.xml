@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   					   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="MyConection" class="artcode.spring.utils.MyConection" scope="singleton"/>
+
+    <bean id="db" class="artcode.spring.utils.MyDB"/>
+
+    <bean id="Clan" class="artcode.spring.model.Clan"/>
+    <bean id="Region" class="artcode.spring.model.Region"/>
+
+    <bean id="Candidate" class="artcode.spring.model.Candidate">
+        <property name="clan" ref="Clan"/>
+        <property name="region" ref="Region"/>
+    </bean>
+
+    <bean id="CandidateDao" class="artcode.spring.dao.CandidatDaoJpaImpl"/>
+
+
+    <bean id="Service" class="artcode.spring.service.Service">
+        <property name="candidatDao" ref="CandidateDao"/>
+    </bean>
+
+
+</beans>
